@@ -6,20 +6,18 @@
 #include <unistd.h>
 
 int main() {
-	int dataNasc, diaNasc, mesNasc, anoNasc; 
+	int dataNasc, diaNasc, mesNasc, anoNasc, Nasc, erro; 
 	char signo[15];
 	
 	
 	printf("Entre com sua data de nascimento: (formato ddmmaaaa)
 	scanf("%d", &dataNasc);
 	anoNasc = dataNasc % 10000;
-	dataNasc = dataNasc / 10000;
-	mesNasc = dataNasc % 100;
+	Nasc = dataNasc / 10000;
 	
-	signo = syscall(mesNasc); // chamar syscall que retorna o signo de acordo com o mês de nascimento 
-	
+	erro = syscall(Nasc); // chamar syscall que retorna o signo de acordo com o mês de nascimento 
 	
 	
-	printf("Retorno da chamada de sistema: %d.\n", r);
+	printf("Seu signo eh %s.\n", signo);
   	return r;
 }
