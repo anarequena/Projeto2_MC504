@@ -1,10 +1,10 @@
 #include <linux/unistd.h>
 #include <linux/linkage.h>
 #include <asm/uaccess.h>
-#include <string.h>
+#include <linux/string.h>
 
 // Recebe o dia e o mes de nascimento da pessoa
-asmlinkage long sys_signoCall(int dia, int mes) {
+asmlinkage long sys_signoCall(int dia, int mes, char *signo) {
 	int size, erro = 0;
 	char signoK[15];
 	
@@ -160,7 +160,8 @@ asmlinkage long sys_signoCall(int dia, int mes) {
 	}
 	
 	size = strlen(signoK);
-	copy_to_user(signo, signoK, size);
+	if(copy_to_user(signo, signoK, size))
+		erro = 1;
 	
   	return(erro);
 }
