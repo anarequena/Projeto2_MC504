@@ -4,12 +4,9 @@
 #include <string.h>
 
 // Recebe o dia e o mes de nascimento da pessoa
-asmlinkage long sys_signoCall(int nasc) {
-	int mes, dia, size, erro = 0;
+asmlinkage long sys_signoCall(int dia, int mes) {
+	int size, erro = 0;
 	char signoK[15];
-	
-	mes = nasc % 100;
-	dia = nasc / 100;
 	
 	switch(mes){ 
 		// Janeiro
